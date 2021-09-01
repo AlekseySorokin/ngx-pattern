@@ -1,5 +1,6 @@
 import { __decorate, __param } from 'tslib';
 import { Input, HostListener, Directive, Inject, ElementRef, Optional, NgModule } from '@angular/core';
+import { NgControl } from '@angular/forms';
 
 let NgxPatternDirective = class NgxPatternDirective {
     constructor(host, control) {
@@ -110,7 +111,7 @@ NgxPatternDirective = __decorate([
     Directive({
         selector: '[ngxPattern]'
     }),
-    __param(0, Inject(ElementRef)), __param(1, Optional())
+    __param(0, Inject(ElementRef)), __param(1, Optional()), __param(1, Inject(NgControl))
 ], NgxPatternDirective);
 /** @see https://developer.mozilla.org/bg/docs/Web/API/KeyboardEvent/key/Key_Values */
 function isSpecialKey(key) {

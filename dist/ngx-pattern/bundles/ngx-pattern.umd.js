@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('ngx-pattern', ['exports', '@angular/core'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['ngx-pattern'] = {}, global.ng.core));
-}(this, (function (exports, core) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms')) :
+    typeof define === 'function' && define.amd ? define('ngx-pattern', ['exports', '@angular/core', '@angular/forms'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['ngx-pattern'] = {}, global.ng.core, global.ng.forms));
+}(this, (function (exports, core, forms) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -415,7 +415,7 @@
         core.Directive({
             selector: '[ngxPattern]'
         }),
-        __param(0, core.Inject(core.ElementRef)), __param(1, core.Optional())
+        __param(0, core.Inject(core.ElementRef)), __param(1, core.Optional()), __param(1, core.Inject(forms.NgControl))
     ], exports.NgxPatternDirective);
     /** @see https://developer.mozilla.org/bg/docs/Web/API/KeyboardEvent/key/Key_Values */
     function isSpecialKey(key) {

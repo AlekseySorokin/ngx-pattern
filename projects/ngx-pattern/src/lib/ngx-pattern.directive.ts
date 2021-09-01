@@ -24,7 +24,7 @@ export class NgxPatternDirective implements OnChanges, OnInit, OnDestroy {
   onPasteHandler: (e: ClipboardEvent) => void;
   onKeydownHandler: (e: KeyboardEvent) => void;
 
-  constructor(@Inject(ElementRef) private host: ElementRef, @Optional() private control: NgControl) {
+  constructor(@Inject(ElementRef) private host: ElementRef, @Optional() @Inject(NgControl) private control: NgControl) {
   }
 
   ngOnInit(): void {
