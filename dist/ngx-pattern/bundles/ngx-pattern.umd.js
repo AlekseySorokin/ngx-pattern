@@ -430,7 +430,10 @@
     exports.NgxPatternModule = __decorate([
         core.NgModule({
             declarations: [exports.NgxPatternDirective],
-            imports: [],
+            imports: [
+                forms.FormsModule,
+                forms.ReactiveFormsModule
+            ],
             exports: [
                 exports.NgxPatternDirective
             ]
