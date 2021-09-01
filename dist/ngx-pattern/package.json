@@ -8,8 +8,8 @@
     "input"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/angel-vladov/ngx-pattern"
+    "type": "git",
+    "url": "https://github.com/angel-vladov/ngx-pattern"
   },
   "peerDependencies": {
     "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0",
@@ -20,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/angel-vladov/ngx-pattern/issues"
   },
-  "homepage": "https://github.com/angel-vladov/ngx-pattern#readme"
+  "homepage": "https://github.com/angel-vladov/ngx-pattern#readme",
+  "main": "bundles/ngx-pattern.umd.js",
+  "module": "fesm2015/ngx-pattern.js",
+  "es2015": "fesm2015/ngx-pattern.js",
+  "esm2015": "esm2015/ngx-pattern.js",
+  "fesm2015": "fesm2015/ngx-pattern.js",
+  "typings": "ngx-pattern.d.ts",
+  "metadata": "ngx-pattern.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
 }
