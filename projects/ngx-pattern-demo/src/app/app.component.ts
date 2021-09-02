@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,10 @@ export class AppComponent implements OnInit {
   value4: string;
   value5: string;
 
+  form: FormGroup = new FormGroup({input: new FormControl()});
+
   ngOnInit(): void {
+
 
   }
 }

@@ -35,6 +35,11 @@
     <span class="value">{{value1}}</span>
   </div>
 
+  <div class="example-card" [formGroup]="form">
+    <input class="control" type="text" formControlName="input" ngxPattern="[a-z]{1,15}">
+    <span class="value">{{form.get('input').value}}</span>
+  </div>
+
   <h3>Numbers Only</h3>
   <p>with regex</p>
 
