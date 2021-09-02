@@ -2,7 +2,7 @@ import * as ɵngcc0 from '@angular/core';
 import * as ɵngcc1 from './ngx-pattern.directive';
 import * as ɵngcc2 from '@angular/forms';
 export declare class NgxPatternModule {
-    static ɵmod: ɵngcc0.ɵɵNgModuleDefWithMeta<NgxPatternModule, [typeof ɵngcc1.NgxPatternDirective], [typeof ɵngcc2.FormsModule, typeof ɵngcc2.ReactiveFormsModule], [typeof ɵngcc1.NgxPatternDirective]>;
+    static ɵmod: ɵngcc0.ɵɵNgModuleDefWithMeta<NgxPatternModule, [typeof ɵngcc1.NgxPatternDirective], [typeof ɵngcc2.FormsModule], [typeof ɵngcc1.NgxPatternDirective]>;
     static ɵinj: ɵngcc0.ɵɵInjectorDef<NgxPatternModule>;
 }
 

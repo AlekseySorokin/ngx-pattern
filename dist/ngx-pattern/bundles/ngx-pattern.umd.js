@@ -431,8 +431,7 @@
         core.NgModule({
             declarations: [exports.NgxPatternDirective],
             imports: [
-                forms.FormsModule,
-                forms.ReactiveFormsModule
+                forms.FormsModule
             ],
             exports: [
                 exports.NgxPatternDirective

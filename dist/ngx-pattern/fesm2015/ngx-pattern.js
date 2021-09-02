@@ -1,6 +1,6 @@
 import { __decorate, __param } from 'tslib';
 import { Input, HostListener, Directive, Inject, ElementRef, Optional, NgModule } from '@angular/core';
-import { NgControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgControl, FormsModule } from '@angular/forms';
 
 let NgxPatternDirective = class NgxPatternDirective {
     constructor(host, control) {
@@ -124,8 +124,7 @@ NgxPatternModule = __decorate([
     NgModule({
         declarations: [NgxPatternDirective],
         imports: [
-            FormsModule,
-            ReactiveFormsModule
+            FormsModule
         ],
         exports: [
             NgxPatternDirective

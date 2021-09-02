@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { NgxPatternDirective } from './ngx-pattern.directive';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [NgxPatternDirective],
   imports: [
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   exports: [
     NgxPatternDirective

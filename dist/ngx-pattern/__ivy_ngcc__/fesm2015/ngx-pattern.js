@@ -1,6 +1,6 @@
 import { __decorate, __param } from 'tslib';
 import { Input, HostListener, Directive, Inject, ElementRef, Optional, NgModule } from '@angular/core';
-import { NgControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgControl, FormsModule } from '@angular/forms';
 
 import * as ɵngcc0 from '@angular/core';
 let NgxPatternDirective = class NgxPatternDirective {
@@ -123,8 +123,7 @@ let NgxPatternModule = class NgxPatternModule {
 };
 NgxPatternModule.ɵmod = ɵngcc0.ɵɵdefineNgModule({ type: NgxPatternModule });
 NgxPatternModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function NgxPatternModule_Factory(t) { return new (t || NgxPatternModule)(); }, imports: [[
-            FormsModule,
-            ReactiveFormsModule
+            FormsModule
         ]] });
 /*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(NgxPatternDirective, [{
         type: Directive,
@@ -148,15 +147,13 @@ NgxPatternModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function NgxPatte
         }], ngxPattern: [{
             type: Input
         }] }); })();
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵngcc0.ɵɵsetNgModuleScope(NgxPatternModule, { declarations: function () { return [NgxPatternDirective]; }, imports: function () { return [FormsModule,
-        ReactiveFormsModule]; }, exports: function () { return [NgxPatternDirective]; } }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵngcc0.ɵɵsetNgModuleScope(NgxPatternModule, { declarations: function () { return [NgxPatternDirective]; }, imports: function () { return [FormsModule]; }, exports: function () { return [NgxPatternDirective]; } }); })();
 /*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(NgxPatternModule, [{
         type: NgModule,
         args: [{
                 declarations: [NgxPatternDirective],
                 imports: [
-                    FormsModule,
-                    ReactiveFormsModule
+                    FormsModule
                 ],
                 exports: [
                     NgxPatternDirective
