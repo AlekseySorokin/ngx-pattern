@@ -6,6 +6,9 @@ let NgxPatternDirective = class NgxPatternDirective {
     constructor(host, control) {
         this.host = host;
         this.control = control;
+        this.lastSelectionStart = 0;
+        this.lastSelectionEnd = 0;
+        this.lastValue = '';
     }
     ngOnInit() {
         this.onPasteHandler = (e) => {

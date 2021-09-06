@@ -300,6 +300,9 @@
         function NgxPatternDirective(host, control) {
             this.host = host;
             this.control = control;
+            this.lastSelectionStart = 0;
+            this.lastSelectionEnd = 0;
+            this.lastValue = '';
         }
         NgxPatternDirective.prototype.ngOnInit = function () {
             var _this = this;
