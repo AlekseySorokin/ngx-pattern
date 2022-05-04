@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms')) :
-    typeof define === 'function' && define.amd ? define('ngx-pattern', ['exports', '@angular/core', '@angular/forms'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['ngx-pattern'] = {}, global.ng.core, global.ng.forms));
-}(this, (function (exports, core, forms) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms'), require('rxjs'), require('rxjs/operators')) :
+    typeof define === 'function' && define.amd ? define('ngx-pattern', ['exports', '@angular/core', '@angular/forms', 'rxjs', 'rxjs/operators'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['ngx-pattern'] = {}, global.ng.core, global.ng.forms, global.rxjs, global.rxjs.operators));
+}(this, (function (exports, core, forms, rxjs, operators) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -300,20 +300,22 @@
         function NgxPatternDirective(host, control) {
             this.host = host;
             this.control = control;
+            this.unsubscribeSubj = new rxjs.Subject();
             this.lastSelectionStart = 0;
             this.lastSelectionEnd = 0;
             this.lastValue = '';
         }
         NgxPatternDirective.prototype.ngOnInit = function () {
             var _this = this;
-            this.onPasteHandler = function (e) {
-                _this.onPaste(e);
-            };
-            this.onKeydownHandler = function (e) {
-                _this.onKeyDown(e);
-            };
-            this.host.nativeElement.addEventListener('keydown', this.onKeydownHandler);
-            this.host.nativeElement.addEventListener('paste', this.onPasteHandler);
+            rxjs.fromEvent(this.host.nativeElement, 'paste')
+                .pipe(operators.takeUntil(this.unsubscribeSubj), operators.tap(function (e) { return _this.onPaste(e); }))
+                .subscribe();
+            rxjs.fromEvent(this.host.nativeElement, 'keydown')
+                .pipe(operators.takeUntil(this.unsubscribeSubj), operators.tap(function (e) { return _this.onKeyDown(e); }))
+                .subscribe();
+            rxjs.fromEvent(this.host.nativeElement, 'touchend')
+                .pipe(operators.takeUntil(this.unsubscribeSubj), operators.tap(function (e) { return _this.onClick(e); }))
+                .subscribe();
         };
         NgxPatternDirective.prototype.ngOnChanges = function () {
             if (this.ngxPattern) {
@@ -326,11 +328,10 @@
             }
         };
         NgxPatternDirective.prototype.ngOnDestroy = function () {
-            this.host.nativeElement.removeEventListener('keydown', this.onKeydownHandler);
-            this.host.nativeElement.removeEventListener('paste', this.onPasteHandler);
+            this.unsubscribeSubj.next();
+            this.unsubscribeSubj.unsubscribe();
         };
-        NgxPatternDirective.prototype.onKeyDown = function (e) {
-            var input = e === null || e === void 0 ? void 0 : e.currentTarget;
+        NgxPatternDirective.prototype.initSelectionValues = function (input) {
             this.lastValue = input.value || '';
             var _c = this.inputEl, selectionStart = _c.selectionStart, selectionEnd = _c.selectionEnd;
             if (selectionStart !== null) {
@@ -339,11 +340,18 @@
             if (selectionEnd !== null) {
                 this.lastSelectionEnd = selectionEnd;
             }
+        };
+        NgxPatternDirective.prototype.onKeyDown = function (e) {
+            var input = e === null || e === void 0 ? void 0 : e.currentTarget;
+            this.initSelectionValues(input);
             if (this.regex && e && !e.ctrlKey && !e.metaKey && !isSpecialKey(e.key)) {
                 if (!this.validWithChange(e.key)) {
                     e.preventDefault();
                 }
             }
+        };
+        NgxPatternDirective.prototype.onClick = function (ev) {
+            this.initSelectionValues(ev.target);
         };
         NgxPatternDirective.prototype.onInput = function () {
             if (this.currentValue && !this.textIsValid(this.currentValue)) {

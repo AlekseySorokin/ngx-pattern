@@ -58,6 +58,9 @@ After installing, include `NgxPatternModule` in your application module like:
 
 #### Changelog
 
+##### v0.2.2
+* Support for Angular 13
+
 ##### 0.2.1
 * Support for Angular 12
 * Working detection on Android mobile browser

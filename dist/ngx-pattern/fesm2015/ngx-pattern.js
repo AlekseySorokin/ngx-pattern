@@ -1,24 +1,28 @@
 import { __decorate, __param } from 'tslib';
 import { Input, HostListener, Directive, Inject, ElementRef, Optional, NgModule } from '@angular/core';
 import { NgControl, FormsModule } from '@angular/forms';
+import { Subject, fromEvent } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 
 let NgxPatternDirective = class NgxPatternDirective {
     constructor(host, control) {
         this.host = host;
         this.control = control;
+        this.unsubscribeSubj = new Subject();
         this.lastSelectionStart = 0;
         this.lastSelectionEnd = 0;
         this.lastValue = '';
     }
     ngOnInit() {
-        this.onPasteHandler = (e) => {
-            this.onPaste(e);
-        };
-        this.onKeydownHandler = (e) => {
-            this.onKeyDown(e);
-        };
-        this.host.nativeElement.addEventListener('keydown', this.onKeydownHandler);
-        this.host.nativeElement.addEventListener('paste', this.onPasteHandler);
+        fromEvent(this.host.nativeElement, 'paste')
+            .pipe(takeUntil(this.unsubscribeSubj), tap((e) => this.onPaste(e)))
+            .subscribe();
+        fromEvent(this.host.nativeElement, 'keydown')
+            .pipe(takeUntil(this.unsubscribeSubj), tap((e) => this.onKeyDown(e)))
+            .subscribe();
+        fromEvent(this.host.nativeElement, 'touchend')
+            .pipe(takeUntil(this.unsubscribeSubj), tap((e) => this.onClick(e)))
+            .subscribe();
     }
     ngOnChanges() {
         if (this.ngxPattern) {
@@ -31,11 +35,10 @@ let NgxPatternDirective = class NgxPatternDirective {
         }
     }
     ngOnDestroy() {
-        this.host.nativeElement.removeEventListener('keydown', this.onKeydownHandler);
-        this.host.nativeElement.removeEventListener('paste', this.onPasteHandler);
+        this.unsubscribeSubj.next();
+        this.unsubscribeSubj.unsubscribe();
     }
-    onKeyDown(e) {
-        const input = e === null || e === void 0 ? void 0 : e.currentTarget;
+    initSelectionValues(input) {
         this.lastValue = input.value || '';
         const { selectionStart, selectionEnd, } = this.inputEl;
         if (selectionStart !== null) {
@@ -44,11 +47,18 @@ let NgxPatternDirective = class NgxPatternDirective {
         if (selectionEnd !== null) {
             this.lastSelectionEnd = selectionEnd;
         }
+    }
+    onKeyDown(e) {
+        const input = e === null || e === void 0 ? void 0 : e.currentTarget;
+        this.initSelectionValues(input);
         if (this.regex && e && !e.ctrlKey && !e.metaKey && !isSpecialKey(e.key)) {
             if (!this.validWithChange(e.key)) {
                 e.preventDefault();
             }
         }
+    }
+    onClick(ev) {
+        this.initSelectionValues(ev.target);
     }
     onInput() {
         if (this.currentValue && !this.textIsValid(this.currentValue)) {
