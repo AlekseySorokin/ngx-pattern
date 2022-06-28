@@ -63,9 +63,7 @@
             "polyfills": "projects/ngx-pattern-demo/src/polyfills.ts",
             "tsConfig": "projects/ngx-pattern-demo/tsconfig.app.json",
             "baseHref": "/ngx-pattern/",
-            "vendorChunk": false,
             "deleteOutputPath": false,
-            "aot": true,
             "assets": [
               "projects/ngx-pattern-demo/src/favicon.ico",
               "projects/ngx-pattern-demo/src/assets"
@@ -73,7 +71,12 @@
             "styles": [
               "projects/ngx-pattern-demo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -88,7 +91,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -104,16 +106,13 @@
               ]
             },
             "local": {
-              "optimization": false,
               "outputHashing": "all",
-              "sourceMap": true,
               "aot": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
