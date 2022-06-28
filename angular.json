@@ -158,7 +158,6 @@
       }
     }
   },
-  "defaultProject": "ngx-pattern",
   "cli": {
     "analytics": false
   }
