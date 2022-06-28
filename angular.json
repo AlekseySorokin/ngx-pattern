@@ -10,7 +10,7 @@
       "prefix": "ngx",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-pattern/tsconfig.lib.json",
             "project": "projects/ngx-pattern/ng-package.json"
@@ -63,7 +63,6 @@
             "polyfills": "projects/ngx-pattern-demo/src/polyfills.ts",
             "tsConfig": "projects/ngx-pattern-demo/tsconfig.app.json",
             "baseHref": "/ngx-pattern/",
-            "extractCss": true,
             "vendorChunk": false,
             "deleteOutputPath": false,
             "aot": true,
@@ -87,7 +86,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -109,7 +107,6 @@
               "optimization": false,
               "outputHashing": "all",
               "sourceMap": true,
-              "extractCss": false,
               "aot": false,
               "namedChunks": false,
               "extractLicenses": true,
