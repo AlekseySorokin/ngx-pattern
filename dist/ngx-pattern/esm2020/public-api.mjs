@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of ngx-pattern
+ */
+export * from './lib/ngx-pattern.directive';
+export * from './lib/ngx-pattern.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL25neC1wYXR0ZXJuL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyw2QkFBNkIsQ0FBQztBQUM1QyxjQUFjLDBCQUEwQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcclxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIG5neC1wYXR0ZXJuXHJcbiAqL1xyXG5cclxuZXhwb3J0ICogZnJvbSAnLi9saWIvbmd4LXBhdHRlcm4uZGlyZWN0aXZlJztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvbmd4LXBhdHRlcm4ubW9kdWxlJztcclxuIl19

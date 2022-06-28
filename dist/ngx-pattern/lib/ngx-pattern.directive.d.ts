@@ -1,5 +1,6 @@
 import { ElementRef, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
+import * as i0 from "@angular/core";
 export declare class NgxPatternDirective implements OnChanges, OnInit, OnDestroy {
     private host;
     private control;
@@ -23,4 +24,6 @@ export declare class NgxPatternDirective implements OnChanges, OnInit, OnDestroy
     private validWithChange;
     private textIsValid;
     get inputEl(): HTMLInputElement;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NgxPatternDirective, [null, { optional: true; }]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgxPatternDirective, "[ngxPattern]", never, { "ngxPattern": "ngxPattern"; }, {}, never, never, false>;
 }
